@@ -16,7 +16,6 @@ function createWindow() {
     backgroundColor: "#f3f1ec",
     autoHideMenuBar: true,
     skipTaskbar: true,
-    opacity: 0.7,
     webPreferences: {
       contextIsolation: true,
       nodeIntegration: false,
