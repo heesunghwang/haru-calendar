@@ -1,0 +1,27 @@
+name: Build Windows Calendar
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: windows-latest
+    defaults:
+      run:
+        working-directory: desktop
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+      - run: Copy-Item ..\app\src\main\assets\index.html .\index.html
+      - run: npm install
+      - run: npm run dist
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      - uses: actions/upload-artifact@v4
+        with:
+          name: haru-calendar-windows
+          path: desktop/release/Haru-Calendar-Setup-*.exe
