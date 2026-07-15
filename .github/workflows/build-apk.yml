@@ -5,6 +5,9 @@ on:
     branches: [main]
   workflow_dispatch:
 
+permissions:
+  contents: write
+
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -18,7 +21,15 @@ jobs:
         with:
           gradle-version: "8.9"
       - run: gradle assembleDebug
+      - run: cp app/build/outputs/apk/debug/app-debug.apk HARU.apk
       - uses: actions/upload-artifact@v4
         with:
           name: haru-calendar-apk
           path: app/build/outputs/apk/debug/app-debug.apk
+      - uses: softprops/action-gh-release@v2
+        with:
+          tag_name: HARU-latest
+          name: HARU Latest
+          body: Android와 Windows용 HARU 최신 설치 파일입니다.
+          files: HARU.apk
+          overwrite_files: true

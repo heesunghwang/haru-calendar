@@ -5,6 +5,9 @@ on:
     branches: [main]
   workflow_dispatch:
 
+permissions:
+  contents: write
+
 jobs:
   build:
     runs-on: windows-latest
@@ -23,3 +26,10 @@ jobs:
         with:
           name: HARU-windows
           path: desktop/release/HARU-Setup-*.exe
+      - uses: softprops/action-gh-release@v2
+        with:
+          tag_name: HARU-latest
+          name: HARU Latest
+          body: Android와 Windows용 HARU 최신 설치 파일입니다.
+          files: desktop/release/HARU-Setup-*.exe
+          overwrite_files: true
