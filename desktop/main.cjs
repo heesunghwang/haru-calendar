@@ -1,5 +1,6 @@
-const { app, BrowserWindow, Menu, Tray } = require("electron");
+const { app, BrowserWindow, Menu, Tray, nativeImage } = require("electron");
 const path = require("path");
+const iconPath = path.join(__dirname, "icon.png");
 
 const gotLock = app.requestSingleInstanceLock();
 if (!gotLock) app.quit();
@@ -26,7 +27,8 @@ function createWindow() {
     height: 820,
     minWidth: 390,
     minHeight: 620,
-    title: "하루 캘린더",
+    title: "HARU",
+    icon: iconPath,
     frame: false,
     backgroundColor: "#f3f1ec",
     autoHideMenuBar: true,
@@ -50,10 +52,10 @@ function createWindow() {
   });
 }
 
-async function createTray() {
-  const icon = await app.getFileIcon(process.execPath, { size: "small" });
+function createTray() {
+  const icon = nativeImage.createFromPath(iconPath).resize({ width: 32, height: 32 });
   tray = new Tray(icon);
-  tray.setToolTip("하루 캘린더");
+  tray.setToolTip("HARU");
   tray.setContextMenu(Menu.buildFromTemplate([
     { label: "캘린더 열기", click: showWindow },
     { label: "숨기기", click: () => mainWindow?.hide() },
@@ -63,10 +65,10 @@ async function createTray() {
   tray.on("click", toggleWindow);
 }
 
-app.whenReady().then(async () => {
+app.whenReady().then(() => {
   app.setLoginItemSettings({ openAtLogin: true });
   createWindow();
-  await createTray();
+  createTray();
 });
 
 app.on("second-instance", showWindow);

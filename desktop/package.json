@@ -1,7 +1,7 @@
 {
   "name": "haru-calendar-desktop",
-  "version": "0.6.0",
-  "description": "하루 캘린더 Windows 데스크톱 앱",
+  "version": "0.7.0",
+  "description": "HARU Windows 데스크톱 캘린더 앱",
   "main": "main.cjs",
   "author": "heesunghwang",
   "license": "MIT",
@@ -14,24 +14,26 @@
   },
   "build": {
     "appId": "com.haru.calendar.desktop",
-    "productName": "하루 캘린더",
+    "productName": "HARU",
     "directories": {
       "output": "release"
     },
     "files": [
       "main.cjs",
-      "index.html"
+      "index.html",
+      "icon.png"
     ],
     "win": {
       "target": "nsis",
-      "artifactName": "Haru-Calendar-Setup-${version}.${ext}"
+      "icon": "icon.ico",
+      "artifactName": "HARU-Setup-${version}.${ext}"
     },
     "nsis": {
       "oneClick": false,
       "allowToChangeInstallationDirectory": true,
       "createDesktopShortcut": true,
       "createStartMenuShortcut": true,
-      "shortcutName": "하루 캘린더"
+      "shortcutName": "HARU"
     }
   }
 }
