@@ -39,6 +39,9 @@ function createWindow() {
   mainWindow.setAspectRatio(470 / 820);
   Menu.setApplicationMenu(null);
   mainWindow.loadFile(path.join(__dirname, "index.html"));
+  mainWindow.webContents.on("did-finish-load", () => {
+    mainWindow.webContents.insertCSS("html{scrollbar-width:none}::-webkit-scrollbar{display:none;width:0;height:0}");
+  });
   mainWindow.on("close", (event) => {
     if (quitting) return;
     event.preventDefault();
