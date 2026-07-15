@@ -27,6 +27,7 @@ function createWindow() {
     minWidth: 390,
     minHeight: 620,
     title: "하루 캘린더",
+    frame: false,
     backgroundColor: "#f3f1ec",
     autoHideMenuBar: true,
     skipTaskbar: true,
@@ -40,7 +41,7 @@ function createWindow() {
   Menu.setApplicationMenu(null);
   mainWindow.loadFile(path.join(__dirname, "index.html"));
   mainWindow.webContents.on("did-finish-load", () => {
-    mainWindow.webContents.insertCSS("html{scrollbar-width:none}::-webkit-scrollbar{display:none;width:0;height:0}");
+    mainWindow.webContents.insertCSS("html{scrollbar-width:none}::-webkit-scrollbar{display:none;width:0;height:0}.top{-webkit-app-region:drag;user-select:none}.top button{-webkit-app-region:no-drag}");
   });
   mainWindow.on("close", (event) => {
     if (quitting) return;
