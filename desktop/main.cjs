@@ -15,12 +15,15 @@ function createWindow() {
     title: "하루 캘린더",
     backgroundColor: "#f3f1ec",
     autoHideMenuBar: true,
+    skipTaskbar: true,
+    opacity: 0.7,
     webPreferences: {
       contextIsolation: true,
       nodeIntegration: false,
       sandbox: true,
     },
   });
+  mainWindow.setAspectRatio(470 / 820);
   Menu.setApplicationMenu(null);
   mainWindow.loadFile(path.join(__dirname, "index.html"));
 }

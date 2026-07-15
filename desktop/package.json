@@ -1,6 +1,6 @@
 {
   "name": "haru-calendar-desktop",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "하루 캘린더 Windows 데스크톱 앱",
   "main": "main.cjs",
   "author": "heesunghwang",
