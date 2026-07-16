@@ -1,0 +1,14 @@
+# Android and Gradle output
+.gradle/
+**/build/
+local.properties
+
+# Signing material
+*.jks
+*.keystore
+keystore.properties
+
+# Desktop output
+desktop/node_modules/
+desktop/release/
+
