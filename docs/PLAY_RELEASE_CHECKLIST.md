@@ -4,9 +4,10 @@
 
 - [x] 패키지명 `com.haru.calendar` 확정
 - [x] `targetSdk 35` 적용
-- [x] 앱 버전 `1.1.0` / versionCode `12`
+- [x] 앱 버전 `1.2.0` / versionCode `13`
 - [x] 앱 백업 비활성화 및 WebView 디버깅 차단
-- [x] 12자리 동기화 보안 코드 적용
+- [x] 이메일 인증 및 비밀번호 로그인 적용
+- [x] 사용자별 일정 RLS와 앱 내 회원 탈퇴 구성
 - [x] release AAB 빌드 작업 구성
 - [ ] 업로드 키스토어 생성
 - [ ] GitHub Actions 서명용 Secrets 등록
@@ -33,4 +34,3 @@
 - `HARU_KEY_PASSWORD`: 업로드 키 비밀번호
 
 키스토어 원본과 비밀번호는 분실하면 안 됩니다. 공개 저장소에 키스토어 또는 비밀번호를 커밋하지 마세요.
-
